@@ -87,10 +87,10 @@ app.get('/api/health', (req, res) => {
 // Serve frontend for all non-API routes (SPA)
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
-  app.get('*', (req, res) => {
+  app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
   });
-} else {
+}
   // 404 Handler for development
   app.use((req, res, next) => {
     res.status(404).json({
