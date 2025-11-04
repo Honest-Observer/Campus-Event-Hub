@@ -48,6 +48,25 @@ app.use('/api/bookmarks', bookmarksRoutes);
 
 // Routes
 /**
+ * Root endpoint
+ * @route GET /
+ * @returns {Object} Welcome message
+ */
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Campus Event Hub API',
+    status: 'running',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      events: '/api/events',
+      registrations: '/api/registrations',
+      bookmarks: '/api/bookmarks'
+    }
+  });
+});
+
+/**
  * Health check endpoint
  * @route GET /api/health
  * @returns {Object} Status message confirming server is running
